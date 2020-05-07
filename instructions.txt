@@ -8,4 +8,7 @@ To check Django version:
     python -m django --version
 
 To start new project:
-    django-admin startproject mysite    // here mysite is name of project    
+    django-admin startproject mysite    // here mysite is name of project
+
+To run the server or up the website:
+    python manage.py runserver  // Run this in the folder where manage.py is located        
