@@ -6,3 +6,6 @@ To check Python version:
     python --version
 To check Django version:
     python -m django --version
+
+To start new project:
+    django-admin startproject mysite    // here mysite is name of project    
