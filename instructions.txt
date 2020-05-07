@@ -5,4 +5,4 @@ Django version: 3.0.6
 To check Python version:
     python --version
 To check Django version:
-     python -m django --version
+    python -m django --version
