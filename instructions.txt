@@ -1,0 +1,8 @@
+To install django, we use:
+    pip install django
+Python version: 3.7.4
+Django version: 3.0.6
+To check Python version:
+    python --version
+To check Django version:
+     python -m django --version
