@@ -16,6 +16,7 @@ def analyze(request):
     fullcaps = request.GET.get('fullcaps', 'off')
     newlineremover = request.GET.get('newlineremover', 'off')
     extraspaceremover = request.GET.get('extraspaceremover', 'off')
+    newlineremover=request.GET.get('newlineremover', 'off')
 
     #Check which checkbox is on
     if removepunc == "on":
@@ -32,6 +33,14 @@ def analyze(request):
         for char in djtext:
             analyzed=analyzed+ char.upper()
         params = {'purpose':'Changed to upper', 'analyzed_text': analyzed}
+        return render(request, 'analyze.html', params)
+
+    elif newlineremover=="on":
+        analyzed=""
+        for char in djtext:
+            if char!='\n':
+                analyzed=analyzed+ char.upper()
+        params = {'purpose':'Remove new lines', 'analyzed_text': analyzed}
         return render(request, 'analyze.html', params)
 
     else:
