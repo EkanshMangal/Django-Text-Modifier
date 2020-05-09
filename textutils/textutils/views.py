@@ -27,6 +27,13 @@ def analyze(request):
         params = {'purpose':'Removed Punctuations', 'analyzed_text': analyzed}
         return render(request, 'analyze.html', params)
 
+    elif fullcaps == "on":
+        analyzed=""
+        for char in djtext:
+            analyzed=analyzed+ char.upper()
+        params = {'purpose':'Changed to upper', 'analyzed_text': analyzed}
+        return render(request, 'analyze.html', params)
+
     else:
         return HttpResponse("Error")
 
