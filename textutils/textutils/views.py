@@ -17,6 +17,7 @@ def analyze(request):
     newlineremover = request.GET.get('newlineremover', 'off')
     extraspaceremover = request.GET.get('extraspaceremover', 'off')
     newlineremover=request.GET.get('newlineremover', 'off')
+    extraspaceremover=request.GET.get('extraspaceremover', 'off')
 
     #Check which checkbox is on
     if removepunc == "on":
@@ -42,6 +43,14 @@ def analyze(request):
                 analyzed=analyzed+ char.upper()
         params = {'purpose':'Remove new lines', 'analyzed_text': analyzed}
         return render(request, 'analyze.html', params)
+
+    elif extraspaceremover=="on":
+        analyzed=""
+        for index,char in enumerate(djtext):
+            if not(djtext[index]==" " and djtext[index+1]==" "):
+                analyzed=analyzed+char
+        params = {'purpose':'Remove extra Space', 'analyzed_text': analyzed}
+        return render(request, 'analyze.html', params)        
 
     else:
         return HttpResponse("Error")
