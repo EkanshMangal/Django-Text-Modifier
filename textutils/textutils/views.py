@@ -18,6 +18,7 @@ def analyze(request):
     extraspaceremover = request.GET.get('extraspaceremover', 'off')
     newlineremover=request.GET.get('newlineremover', 'off')
     extraspaceremover=request.GET.get('extraspaceremover', 'off')
+    charcount=request.GET.get('charcount', 'off')
 
     #Check which checkbox is on
     if removepunc == "on":
@@ -50,7 +51,11 @@ def analyze(request):
             if not(djtext[index]==" " and djtext[index+1]==" "):
                 analyzed=analyzed+char
         params = {'purpose':'Remove extra Space', 'analyzed_text': analyzed}
-        return render(request, 'analyze.html', params)        
+        return render(request, 'analyze.html', params)       
+    elif charcount=="on":
+        analyzed=len(djtext)
+        params = {'purpose':'Count the character', 'analyzed_text': analyzed}
+        return render(request,'analyze.html',params)     
 
     else:
         return HttpResponse("Error")
